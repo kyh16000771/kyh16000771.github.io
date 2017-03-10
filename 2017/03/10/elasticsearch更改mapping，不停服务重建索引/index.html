@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
 这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这">
-<meta property="og:updated_time" content="2017-03-10T07:49:36.556Z">
+<meta property="og:updated_time" content="2017-03-10T07:52:35.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticsearch更改mapping，不停服务重建索引">
 <meta name="twitter:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
@@ -281,10 +281,6 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
         		</li>
       		
@@ -457,19 +453,15 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ES</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
