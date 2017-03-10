@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
 这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这">
-<meta property="og:updated_time" content="2017-03-10T07:52:35.767Z">
+<meta property="og:updated_time" content="2017-03-10T07:54:27.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticsearch更改mapping，不停服务重建索引">
 <meta name="twitter:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
@@ -281,6 +281,10 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
         		</li>
       		
@@ -350,6 +354,15 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/03/10/MySQL单列索引和组合索引的区别介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL单列索引和组合索引的区别介绍
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/10/使用JQuery获取对象的几种方式/" id="article-nav-older" class="article-nav-link-wrap">
@@ -449,11 +462,23 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,7 +486,15 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">

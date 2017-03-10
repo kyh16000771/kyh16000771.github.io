@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | nieht</title>
+  <title>Spring+Spring MVC+MyBatis整合 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="nieht">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="1.1设计思想
+
+使用JSP作为展示层，spring作为控制器，用户发送请求时，使用Spring MVC找到对应的处理请求的Action，经过业务逻辑层到持久层(MyBatis)与数据库交互，最后返回给用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring+Spring MVC+MyBatis整合">
+<meta property="og:url" content="http://yoursite.com/2017/03/10/Spring+Spring MVC+MyBatis整合/index.html">
 <meta property="og:site_name" content="nieht">
+<meta property="og:description" content="1.1设计思想
+
+使用JSP作为展示层，spring作为控制器，用户发送请求时，使用Spring MVC找到对应的处理请求的Action，经过业务逻辑层到持久层(MyBatis)与数据库交互，最后返回给用户">
+<meta property="og:updated_time" content="2017-03-10T09:10:13.531Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nieht">
+<meta name="twitter:title" content="Spring+Spring MVC+MyBatis整合">
+<meta name="twitter:description" content="1.1设计思想
+
+使用JSP作为展示层，spring作为控制器，用户发送请求时，使用Spring MVC找到对应的处理请求的Action，经过业务逻辑层到持久层(MyBatis)与数据库交互，最后返回给用户">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -145,36 +155,452 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring+Spring MVC+MyBatis整合" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/Spring+Spring MVC+MyBatis整合/" class="archive-article-date">
-  	<time datetime="2017-03-10T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/Spring+Spring MVC+MyBatis整合/">Spring+Spring MVC+MyBatis整合</a>
+    <h1 class="article-title" itemprop="name">
+      Spring+Spring MVC+MyBatis整合
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/10/Spring+Spring MVC+MyBatis整合/" class="archive-article-date">
+  	<time datetime="2017-03-10T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.1设计思想</p>
+<blockquote>
+<p>使用JSP作为展示层，spring作为控制器，用户发送请求时，使用Spring MVC找到对应的处理请求的Action，经过业务逻辑层到持久层(MyBatis)与数据库交互，最后返回给用户</p>
+</blockquote>
+<a id="more"></a>
+<p>1.2开发环境</p>
+<blockquote>
+<p>操作系统：Window 7</p>
+<p>IDE工具：Eclipse 4.4.1</p>
+<p>服务器：Tomcat 7.0</p>
+<p>数据库：MySQL 5.5.23</p>
+<p>应用框架：Spring 3.2.0 +MyBatis 3.1.1</p>
+<p>前端技术：JSP + JQuery1.7.2</p>
+</blockquote>
+<p>1.3系统模块介绍</p>
+<blockquote>
+<p>DAO层：由MyBatis作为DAO层，负责与数据间的交互</p>
+<p>Sevice层：业务处理层，由Spring负责，事务管控都在此层处理，</p>
+<p>Web(Controller)层：控制层，由Spring MVC作支持，负责响应用户请求，并找到对应JSP，将结果返回给客户端</p>
+<p>Resource层：</p>
+<p>config：主要存放配置文件，主要文件如下</p>
+<p>applicationContext.xml  Spring配置文件，数据库连接池，AOP事务控制都在此文件中配置，需要在web.xml文件中配置此文件，服务器启动时，自动加载Spring相关信息</p>
+<p>mvc-dispatcher-servlet.xml  SpringMVC配置文件，自动扫描Controller，Service，模型视图的解析都在此文件中配置，需要在web.xml文件中配置此文件，服务器启动时，自动启用Spring MVC</p>
+<p> jdbc.properties  数据库连接，用户名，密码都在此文件中配置，此文件需要在applicationContext.xml中配置</p>
+<p> log4j.properties   日志配置文件，需要在web.xml文件中配置</p>
+</blockquote>
+<p>1.4开发示例</p>
+<p>applicationContext.xml</p>
+<pre>
+< ?xml version="1.0" encoding="UTF-8"?>  
+< beans xmlns="http://www.springframework.org/schema/beans"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:context="http://www.springframework.org/schema/context"   
+    xmlns:tx="http://www.springframework.org/schema/tx"   
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xsi:schemaLocation="  
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+        http://www.springframework.org/schema/aop   
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">  
+
+    < !-- 引入属性文件 -->  
+    < context:property-placeholder location="classpath:config/jdbc.properties" />  
+
+    < !-- 配置数据源 -->  
+    < bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">  
+        < property name="url" value="${jdbc_url}" />  
+        < property name="username" value="${jdbc_username}" />  
+        < property name="password" value="${jdbc_password}" />  
+
+        < -- 初始化连接大小 -->  
+        < property name="initialSize" value="0" />  
+        < !-- 连接池最大使用连接数量 -->  
+        < property name="maxActive" value="20" />  
+        < !-- 连接池最大空闲 -->  
+        < property name="maxIdle" value="20" />  
+        < !-- 连接池最小空闲 -->  
+        < property name="minIdle" value="0" />  
+        < !-- 获取连接最大等待时间 -->  
+        < property name="maxWait" value="60000" />  
+        < property name="validationQuery" value="${validationQuery}" />  
+        < property name="testOnBorrow" value="false" />  
+        < property name="testOnReturn" value="false" />  
+        < property name="testWhileIdle" value="true" />  
+
+        < !-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->  
+        < property name="timeBetweenEvictionRunsMillis" value="60000" />  
+        < !-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->  
+        < property name="minEvictableIdleTimeMillis" value="25200000" />  
+
+        < !-- 打开removeAbandoned功能 -->  
+        < property name="removeAbandoned" value="true" />  
+        < !-- 1800秒，也就是30分钟 -->  
+        < property name="removeAbandonedTimeout" value="1800" />  
+        < !-- 关闭abanded连接时输出错误日志 -->  
+        < property name="logAbandoned" value="true" />  
+
+        < !-- 监控数据库 -->  
+        < !-- <property name="filters" value="stat"> -->  
+        < property name="filters" value="mergeStat" />  
+    < /bean>  
+
+    < !-- myBatis文件 -->  
+    < bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        < property name="dataSource" ref="dataSource" />  
+        < !-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->  
+        < property name="mapperLocations" value="classpath:mapper/*/*.xml" />  
+    < /bean>  
+
+    < bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        < property name="basePackage" value="com.weixin.dao" />  
+        < property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />  
+    < /bean>  
+
+    < !-- 配置事务管理器 -->  
+    < bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        < property name="dataSource" ref="dataSource" />  
+    < /bean>  
+
+    < !-- 拦截器方式配置事物 -->  
+    < tx:advice id="transactionAdvice" transaction-manager="transactionManager">  
+        < tx:attributes>  
+            < tx:method name="add*" propagation="REQUIRED" />  
+            < tx:method name="append*" propagation="REQUIRED" />  
+            < tx:method name="insert*" propagation="REQUIRED" />  
+            < tx:method name="save*" propagation="REQUIRED" />  
+            < tx:method name="update*" propagation="REQUIRED" />  
+            < tx:method name="modify*" propagation="REQUIRED" />  
+            < tx:method name="edit*" propagation="REQUIRED" />  
+            < tx:method name="delete*" propagation="REQUIRED" />  
+            < tx:method name="remove*" propagation="REQUIRED" />  
+            < tx:method name="repair" propagation="REQUIRED" />  
+            < tx:method name="delAndRepair" propagation="REQUIRED" />  
+
+            < tx:method name="get*" propagation="SUPPORTS" />  
+            < tx:method name="find*" propagation="SUPPORTS" />  
+            < tx:method name="load*" propagation="SUPPORTS" />  
+            < tx:method name="search*" propagation="SUPPORTS" />  
+            < tx:method name="datagrid*" propagation="SUPPORTS" />  
+
+            < tx:method name="*" propagation="SUPPORTS" />  
+        < /tx:attributes>  
+    < /tx:advice>  
+    < aop:config>  
+        < aop:pointcut id="transactionPointcut" expression="execution(* com.weixin.service..*Impl.*(..))" />  
+        < aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />  
+    < /aop:config>     
+< /beans>
+</property></pre>
+mvc-dispatcher-servlet.xml
+<pre>
+< ?xml version="1.0" encoding="UTF-8"?>  
+< beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+http://www.springframework.org/schema/context   
+http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+http://www.springframework.org/schema/mvc   
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">  
+
+
+    < !-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->  
+    < context:component-scan base-package="com.weixin.web.controller" />  
+    < context:component-scan base-package="com.weixin.service..*" />  
+
+    < mvc:annotation-driven />  
+
+    < !-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->  
+    < bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >  
+        < property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>  
+        < property name="contentType" value="text/html;charset=utf-8"/>  
+        < property name="prefix" value="/jsp/"/>  
+        < property name="suffix" value=".jsp"/>  
+    < /bean>      
+< /beans>  
+</pre>
+
+<p>jdbc.properties</p>
+<pre>
+validationQuery=SELECT 1 FROM DUAL  
+jdbc_url=jdbc:mysql://localhost:3306/bigmouth?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull  
+jdbc_username=root  
+jdbc_password=123456  
+</pre>
+log4j.properties
+<pre>
+### set log levels ###      
+log4j.rootLogger = debug , stdout,D  
+
+###  output to the console ###  
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender       
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout       
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} [%t] [%c] [%p] - %m%n       
+
+### Output to the log file ###  
+#log4j.appender.D = org.apache.log4j.DailyRollingFileAppender  
+#log4j.appender.D.File = D:/logs/logs.log  
+#log4j.appender.D.File =/usr/local/java/apache-tomcat-7.0.62/logs/logs.log  
+#log4j.appender.D.Append = true  
+#log4j.appender.D.Threshold = INFO  
+#log4j.appender.D.datePattern='.'yyyy-MM-dd  
+#log4j.appender.D.layout = org.apache.log4j.PatternLayout  
+#log4j.appender.D.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} [%t] [%c] [%p] - %m%n  
+</pre>
+1.在/com/weixin/model/user/目录下创建User对象，代码如下
+
+<pre>
+package com.weixin.model.user;
+
+public class User {
+
+   private StringuserId;
+
+   private StringuserName;
+
+   private Stringpassword;
+
+   public String getUserId() {
+
+      return userId;
+
+   }
+
+   public void setUserId(String userId) {
+
+      this.userId =userId;
+
+   }
+
+   public String getUserName() {
+
+      returnuserName;
+
+   }
+
+   public void setUserName(String userName) {
+
+      this.userName =userName;
+
+   }
+
+   public String getPassword() {
+
+      return password;
+
+   }
+
+   public void setPassword(String password) {
+
+      this.password =password;
+
+   }
+}
+</pre>
+2.在/resource/mapper/user/目录下创建操作用户的配置文件UserMapper.xml，此文件属于MyBatis操作数据库的文件，用户的增删改查SQl都在此文件中配置，内容如下
+<pre>
+< ?xmlversion="1.0"encoding="UTF-8"?>
+< !DOCTYPEmapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+< mappernamespace="com.weixin.dao.user.IUserDao">
+   < resultMapid="user"type="com.weixin.model.user.User">
+      < resultcolumn="user_id"property="userId"jdbcType="VARCHAR"/>
+      < resultcolumn="user_name"property="userName"jdbcType="VARCHAR"/>
+      < resultcolumn="password"property="password"jdbcType="VARCHAR"/>
+   < /resultMap>
+< selectid="selectUserNameById"parameterType="Integer" resultType="String">
+      SELECT t.user_name
+      FROM user_t t
+      WHERE t.user_id = #{userId}
+< /select>
+
+ < selectid="selectAllUser"resultMap="user">
+      SELECT
+      t.user_name,t.password FROM user_t t
+ < /select>
+
+< updateid="updateUser"parameterType="com.weixin.model.user.User">
+      update user_t t set
+      t.user_name = #{userName}
+      where t.user_id = #{userId}
+< /update>
+
+< insertid="addUser"parameterType="com.weixin.model.user.User" useGeneratedKeys="true"keyProperty="userId">
+      insert into
+      user_t(user_name,password)
+      values(#{userName},#{password})
+< /insert>
+
+< deleteid="deleteUserByUserId"parameterType="Integer">
+      delete from user_t where user_id = #{userId}
+< /delete>
+< /mapper>
+</pre>
+注意：需要指定namespace，value值是对应DAO文件的全限定名
+
+3.在/com/weixin/dao/user/目录下创建IUserDao.Java文件，此文件提供对用户增删改查的对应接口，接口名必须与UserMapper.xml文件中的id值一一对应，内容如下
+<pre>
+package com.weixin.dao.user;
+
+import java.util.List;
+import com.weixin.model.user.User;
+
+public interface IUserDao {
+
+     String selectUserNameById(int userId);
+
+     List<user> selectAllUser();
+
+     void updateUser(User user);
+
+     void addUser(User user);
+
+     void deleteUserByUserId(int userId);
+}
+</user></pre>
+
+<p>不需要为IUserDao接口提供对应的实现，MyBatis会根据接口名，及UserMapper.xml文件中的namespace,找到对应的SQL，并执行</p>
+<p>4.提供Service层接口，在/com/weixin/service/user/路径下创建IUserService.java文件，代码如下</p>
+<p><pre><br>package com.weixin.service.user;</pre></p>
+<p>import java.util.List;<br>import com.weixin.model.user.User;</p>
+<p>public interface IUserService {<br>     public String selectUserNameById(int userId);</p>
+<pre><code>public List&lt;User&gt; selectAllUser();
+
+void updateUser(User user);
+
+void addUser(User user);
+
+void deleteUserByUserId(int userId);
+</code></pre><p>}<br><br>5.提供IUserService的实现UserServiceImpl，在/com/weixin/service/user/路径下创建UserServiceImpl.java文件，代码如下</p>
+<p><pre><br>package com.weixin.service.user;</pre></p>
+<p>import java.util.List;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;<br>import com.weixin.dao.user.IUserDao;<br>import com.weixin.model.user.User;</p>
+<p>@Service(“userService”)<br>public class UserServiceImpl implements IUserService {</p>
+<pre><code>IUserDao userDao;
+
+@Autowired
+public void setUserDao(IUserDao userDao) {
+      this.userDao = userDao;
+}
+
+@Override
+public String selectUserNameById(int userId) {
+      return userDao.selectUserNameById(userId);
+}
+
+@Override
+public List&lt;User&gt; selectAllUser() {
+      return userDao.selectAllUser();
+}
+
+@Override
+public void updateUser(User user) {
+      userDao.updateUser(user);
+}
+
+@Override
+public void addUser(User user) {
+      userDao.addUser(user);
+}
+
+@Override
+public void deleteUserByUserId(int userId) {
+      userDao.deleteUserByUserId(userId);
+}
+</code></pre><p>}<br><br>说明：</p>
+<p>需要为UserServiceImpl指定@Service(“userService”)，说明该Service具有业务处理的功能，Controller层中会使用userService调用对应的业务接口</p>
+<p>在setUserDao()文件中使用@Autowired，Spring会根据此标识自动装载userDao</p>
+<p>6.在/com/weixin/web/controller/user/路径下创建UserController.java，负责响应用户的请求，代码如下</p>
+<p><pre><br>package com.weixin.web.controller.user;</pre></p>
+<p>import java.util.List;<br>import javax.servlet.http.HttpServletRequest;<br>import org.apache.commons.logging.Log;<br>import org.apache.commons.logging.LogFactory;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Controller;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import com.weixin.model.user.User;<br>import com.weixin.service.user.IUserService;</p>
+<p>@Controller<br>@RequestMapping(“user”)<br>public class UserController {<br>     private static Log log = LogFactory.getLog(UserController.class);</p>
+<pre><code>IUserService userService;
+
+@RequestMapping(&quot;index&quot;)
+public String index(HttpServletRequest request) {
+      String userName = userService.selectUserNameById(1);
+      System.out.println(userName);
+      log.info(&quot;select username success&quot;);
+
+      /*User user = new User();
+      user.setUserId(&quot;1&quot;);
+      user.setUserName(&quot;spring&quot;);
+      userService.updateUser(user);*/
+
+      /*User user = new User();
+      user.setUserName(&quot;aaa&quot;);
+      user.setPassword(&quot;123456&quot;);
+      userService.addUser(user);*/
+
+      /*int userId = 7;
+
+      userService.deleteUserByUserId(userId);*/
+      List&lt;User&gt; userList = userService.selectAllUser();
+      request.setAttribute(&quot;userList&quot;, userList);
+
+      return &quot;index&quot;;
+}
+
+@Autowired
+public void setUserService(IUserService userService) {
+      this.userService = userService;
+}
+</code></pre><p>}<br><br>说明：</p>
+<p>使用@Controller，使UserController既有控制器的功能</p>
+<p>在UserController上使用@RequestMapping，指定该控制器的访问根路径；在方法上使用@RequestMapping，指定使用哪个方法接收用户请求</p>
+<p>在setUserService(IUserServiceuserService)方法中使用@Autowired，Spring会根据此标识自动装载userService</p>
+<p>7.在/WebContent/jsp/路径下创建index.jsp，代码如下</p>
+<p><pre><br>&lt; %@ include file=”/jsp/common/common.jsp”%&gt;<br>&lt; !DOCTYPEhtml PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN” “<a href="http://www.w3.org/TR/html4/loose.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</a><br>&lt; html&gt;<br>&lt; head&gt;<br>&lt; metahttp-equiv=”Content-Type”content=”text/html; charset=utf-8”&gt;<br>&lt; title&gt;Insert title here<br>&lt; /head&gt;<br>&lt; body&gt;<br>&lt; c:forEachvar=”u”items=”${userList }”&gt;<br>   ${u.userName }<br>&lt; /c:forEach&gt;<br>&lt; /body&gt;<br>&lt; /html&gt;<br></pre><br>8.修改web.xml文件内容，修改后内容如下</p>
+<p><pre><br>&lt; ?xmlversion=”1.0”encoding=”UTF-8”?&gt;<br>&lt; web-appversion=”3.0”<br>   xmlns=”<a href="http://java.sun.com/xml/ns/javaee" target="_blank" rel="external">http://java.sun.com/xml/ns/javaee</a>“<br>   xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance" target="_blank" rel="external">http://www.w3.org/2001/XMLSchema-instance</a>“<br>   xsi:schemaLocation=”<a href="http://java.sun.com/xml/ns/javaee" target="_blank" rel="external">http://java.sun.com/xml/ns/javaee</a><br>   <a href="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;&gt;" target="_blank" rel="external">http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;&gt;</a></pre></p>
+<p>&lt; display-name&gt;spring_mybatis&lt; /display-name&gt;<br>  &lt; context-param&gt;<br>    &lt; param-name&gt;contextConfigLocation&lt; /param-name&gt;<br>    &lt; param-value&gt;classpath:config/applicationContext.xml&lt; /param-value&gt;<br>  &lt; /context-param&gt;<br>  <!-- 日志记录 --><br>  &lt; context-param&gt;<br>        &lt; !– 日志配置文件路径 –&gt;<br>        &lt; param-name&gt;log4jConfigLocation&lt; /param-name&gt;<br>        &lt; param-value&gt;classpath:config/log4j.properties&lt; /param-value&gt;<br>  &lt; /context-param&gt;</p>
+<p>  &lt; context-param&gt;<br>       &lt; !– 日志页面的刷新间隔 –&gt;<br>        &lt; param-name&gt;log4jRefreshInterval<br>        &lt; param-value&gt;6000<br>  &lt; /context-param&gt;</p>
+<p>&lt; listener&gt;<br>    &lt; listener-class&gt;org.springframework.web.util.Log4jConfigListener&lt; /listener-class&gt;<br>  &lt; /listener&gt;</p>
+<p>  &lt; listener&gt;<br>    &lt; listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt; /listener-class&gt;<br>  &lt; /listener&gt;</p>
+<p>&lt; listener&gt;<br>    &lt; listener-class&gt;org.springframework.web.context.ContextCleanupListener&lt; /listener-class&gt;<br>  </p>
+<p>  &lt; servlet&gt;<br>    &lt; servlet-name&gt;mvc-dispatcher&lt; /servlet-name&gt;<br>    &lt; servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt; /servlet-class&gt;<br>    &lt; init-param&gt;<br>      &lt; param-name&gt;contextConfigLocation&lt; /param-name&gt;<br>      &lt; param-value&gt;classpath:config/mvc-dispatcher-servlet.xml&lt; /param-value&gt;<br>    &lt; /init-param&gt;<br>    &lt; load-on-startup&gt;1&lt; /load-on-startup&gt;<br>  &lt; /servlet&gt;<br>  &lt; servlet-mapping&gt;<br>    &lt; servlet-name&gt;mvc-dispatcher&lt; /servlet-name&gt;<br>    &lt; url-pattern&gt;*.do&lt; /url-pattern&gt;<br>  &lt; /servlet-mapping&gt;<br>&lt; /web-app&gt;<br><br>启动服务器，在浏览器中输入如下URL发送请求，请求成功</p>
+<p><a href="http://localhost:8080/spring_mybatis/user/index.do" target="_blank" rel="external">http://localhost:8080/spring_mybatis/user/index.do</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,377 +620,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/Spring+Spring MVC+MyBatis整合/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/MySQL单列索引和组合索引的区别介绍/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/MySQL单列索引和组合索引的区别介绍/">MySQL单列索引和组合索引的区别介绍</a>
-    </h1>
+  
+    <a href="/2017/03/10/MySQL单列索引和组合索引的区别介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL单列索引和组合索引的区别介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/elasticsearch更改mapping，不停服务重建索引/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/elasticsearch更改mapping，不停服务重建索引/">elasticsearch更改mapping，不停服务重建索引</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/使用JQuery获取对象的几种方式/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/使用JQuery获取对象的几种方式/">是用JQuery获取对象的几种方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/">Java中List 去掉重复的值，并保持原先List顺序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/SpringMVC @RequestBody接收Json对象字符串/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/SpringMVC @RequestBody接收Json对象字符串/">SpringMVC @RequestBody接收Json对象字符串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/Tomcat配置去掉项目名称，直接通过域名访问/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/Tomcat配置去掉项目名称，直接通过域名访问/">Tomcat配置去掉项目名称，直接通过域名访问</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/Windows下安装ELK/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/Windows下安装ELK/">Windows下安装ELK</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/java foreach遍历的前提条件/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/java foreach遍历的前提条件/">java foreach遍历的前提条件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/mybatis中的#和$的区别/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/mybatis中的#和$的区别/">mybatis中的那些细节</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -587,8 +724,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
