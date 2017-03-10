@@ -147,6 +147,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-elasticsearch更改mapping，不停服务重建索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/elasticsearch更改mapping，不停服务重建索引/">elasticsearch更改mapping，不停服务重建索引</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/10/elasticsearch更改mapping，不停服务重建索引/" class="archive-article-date">
+  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？</p>
+<p>这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这个完全是可以做到平滑过渡的。</p>
+<p>采取什么合理设计呢？就是我们的程序访问索引库时，始终使用同义词来访问，而不要使用真正的indexName。在reindex完数据之后，修改之前的同义词即可。</p>
+        
+          <a class="article-more-a" href="/2017/03/10/elasticsearch更改mapping，不停服务重建索引/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ES,elasticsearch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/10/elasticsearch更改mapping，不停服务重建索引/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-使用JQuery获取对象的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/使用JQuery获取对象的几种方式/">是用JQuery获取对象的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/10/使用JQuery获取对象的几种方式/" class="archive-article-date">
+  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、先讲讲JQuery的概念 </p>
+<p>JQuery首先是由一个 America 的叫什么 John Resig的人创建的，后来又很多的JS高手也加入了这个团队。其实 JQuery是一个JavaScript的类库，这个类库集合了很多功能方法，利用类库你可以用简单的一些代码实现一些复杂的JS效果。 </p>
+        
+          <a class="article-more-a" href="/2017/03/10/使用JQuery获取对象的几种方式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jQuery,web前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/10/使用JQuery获取对象的几种方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-SpringMVC @RequestBody接收Json对象字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -250,7 +381,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ES,elasticsearch</a>
         		</li>
       		
 		</ul>
@@ -330,6 +461,74 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/24/mybatis中的#和$的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-java foreach遍历的前提条件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/java foreach遍历的前提条件/">java foreach遍历的前提条件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/24/java foreach遍历的前提条件/" class="archive-article-date">
+  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目的： 加深foreach遍历的影响</p>
+<p>证明：foreach遍历的前提条件是：list !=null ,而不是：list !=null &amp;&amp; list.size() &gt;0</p>
+<p>说明： jdk -version : 1.7</p>
+<p>Java代码</p>
+<p><pre><br>public static void main(String[] args) {<br>        List<string> list = null;<br>    //    List<string> list = new ArrayList<string>();<br>        for(String temp : list){<br>            System.out.println(temp);<br>        }<br>        System.out.println(“over”);<br>}<br></string></string></string></pre><br>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
+<p>　　   当list =new ArrayList<string> 时，未报任何异常</string></p>
+<p>总结：list.size() &gt; 0不是foreach的必要前提条件，而list != null才是foreach的前提条件</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/24/java foreach遍历的前提条件/">展开全文 >></a>
         </p>
       
 
@@ -432,11 +631,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+                <a href="javascript:void(0)" class="js-tag color2">ES,elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jQuery,web前端</a>
               </li>
             
             <div class="clearfix"></div>
