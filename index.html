@@ -687,6 +687,74 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
 
 
   
+    <article id="post-java foreach遍历的前提条件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/java foreach遍历的前提条件/">java foreach遍历的前提条件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/24/java foreach遍历的前提条件/" class="archive-article-date">
+  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目的： 加深foreach遍历的影响</p>
+<p>证明：foreach遍历的前提条件是：list !=null ,而不是：list !=null &amp;&amp; list.size() &gt;0</p>
+<p>说明： jdk -version : 1.7</p>
+<p>Java代码</p>
+<p><pre><br>public static void main(String[] args) {<br>        List<string> list = null;<br>    //    List<string> list = new ArrayList<string>();<br>        for(String temp : list){<br>            System.out.println(temp);<br>        }<br>        System.out.println(“over”);<br>}<br></string></string></string></pre><br>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
+<p>　　   当list =new ArrayList<string> 时，未报任何异常</string></p>
+<p>总结：list.size() &gt; 0不是foreach的必要前提条件，而list != null才是foreach的前提条件</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/24/java foreach遍历的前提条件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-mybatis中的#和$的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -739,74 +807,6 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/24/mybatis中的#和$的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-java foreach遍历的前提条件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/java foreach遍历的前提条件/">java foreach遍历的前提条件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/24/java foreach遍历的前提条件/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>目的： 加深foreach遍历的影响</p>
-<p>证明：foreach遍历的前提条件是：list !=null ,而不是：list !=null &amp;&amp; list.size() &gt;0</p>
-<p>说明： jdk -version : 1.7</p>
-<p>Java代码</p>
-<p><pre><br>public static void main(String[] args) {<br>        List<string> list = null;<br>    //    List<string> list = new ArrayList<string>();<br>        for(String temp : list){<br>            System.out.println(temp);<br>        }<br>        System.out.println(“over”);<br>}<br></string></string></string></pre><br>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
-<p>　　   当list =new ArrayList<string> 时，未报任何异常</string></p>
-<p>总结：list.size() &gt; 0不是foreach的必要前提条件，而list != null才是foreach的前提条件</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/24/java foreach遍历的前提条件/">展开全文 >></a>
         </p>
       
 
@@ -905,14 +905,6 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
@@ -921,15 +913,15 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -938,6 +930,14 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
