@@ -10,20 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="mybatis中的#和$的区别
 1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.
-2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么解">
+2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mybatis中#跟$的区别">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/mybatis/index.html">
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="mybatis中的#和$的区别
 1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.
-2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么解">
-<meta property="og:updated_time" content="2017-03-29T11:01:39.559Z">
+2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么">
+<meta property="og:updated_time" content="2017-03-29T11:05:35.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis中#跟$的区别">
 <meta name="twitter:description" content="mybatis中的#和$的区别
 1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.
-2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么解">
+2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -157,7 +157,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mybatis中的#和$的区别</p>
+        <a id="more"></a>
+<p>mybatis中的#和$的区别</p>
 <p>1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.</p>
 <p>2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么解析成sql时的值为order by user_id,  如果传入的值是id，则解析成的sql为order by id.</p>
 <p>3.#方式能够很大程度防止sql注入,$方式无法防止Sql注入。</p>
@@ -390,6 +391,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
@@ -407,14 +416,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
