@@ -411,6 +411,80 @@
 
 
   
+    <article id="post-Java中List 去掉重复的值，并保持原先List顺序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/">Java中List 去掉重复的值，并保持原先List顺序</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/" class="archive-article-date">
+  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java 代码：</p>
+<pre>
+private List<yourbean> removeDuplicate(List<yourbean> list) {
+        Set<yourbean> set = new HashSet<yourbean>();
+        List<yourbean> newList = new ArrayList<yourbean>();
+        for (Iterator<yourbean> iter = list.iterator(); iter.hasNext();) {
+            YourBean element = (YourBean) iter.next();
+            if (set.add(element))
+                newList.add(element);
+        }
+        return newList;
+    } 
+</yourbean></yourbean></yourbean></yourbean></yourbean></yourbean></yourbean></pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-SpringMVC @RequestBody接收Json对象字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -525,80 +599,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/24/Tomcat配置去掉项目名称，直接通过域名访问/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java中List 去掉重复的值，并保持原先List顺序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/">Java中List 去掉重复的值，并保持原先List顺序</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java 代码：</p>
-<pre>
-private List<yourbean> removeDuplicate(List<yourbean> list) {
-        Set<yourbean> set = new HashSet<yourbean>();
-        List<yourbean> newList = new ArrayList<yourbean>();
-        for (Iterator<yourbean> iter = list.iterator(); iter.hasNext();) {
-            YourBean element = (YourBean) iter.next();
-            if (set.add(element))
-                newList.add(element);
-        }
-        return newList;
-    } 
-</yourbean></yourbean></yourbean></yourbean></yourbean></yourbean></yourbean></pre>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/">展开全文 >></a>
         </p>
       
 
@@ -762,7 +762,7 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/mybatis中#跟$的区别/">mybatis中#跟$的区别</a>
+      <a class="article-title" href="/2017/02/24/mybatis中#跟$的区别/">mybatis mapper中的那些区别</a>
     </h1>
   
 
@@ -903,11 +903,7 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,11 +919,15 @@ private List<yourbean> removeDuplicate(List<yourbean> list) {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
