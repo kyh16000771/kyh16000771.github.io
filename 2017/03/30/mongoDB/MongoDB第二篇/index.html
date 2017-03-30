@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: MongoDB | nieht</title>
+  <title>MongoDB第二篇 -- 细说增删改查 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="nieht">
-<meta property="og:url" content="http://yoursite.com/tags/MongoDB/index.html">
+  <meta name="description" content="一、Insert操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB第二篇 -- 细说增删改查">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/mongoDB/MongoDB第二篇/index.html">
 <meta property="og:site_name" content="nieht">
+<meta property="og:description" content="一、Insert操作">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/9.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/10.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/11.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/12.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/13.png">
+<meta property="og:updated_time" content="2017-03-30T03:20:38.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nieht">
+<meta name="twitter:title" content="MongoDB第二篇 -- 细说增删改查">
+<meta name="twitter:description" content="一、Insert操作">
+<meta name="twitter:image" content="http://yoursite.com/img/MongoDB/9.png">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -127,36 +137,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-mongoDB/MongoDB第二篇" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      MongoDB第二篇 -- 细说增删改查
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/mongoDB/MongoDB第二篇/" class="archive-article-date">
+
+        
+        <a href="/2017/03/30/mongoDB/MongoDB第二篇/" class="archive-article-date">
   	<time datetime="2017-03-30T03:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/mongoDB/MongoDB第二篇/">MongoDB第二篇 -- 细说增删改查</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、Insert操作<br><a id="more"></a><br>上一篇也说过,文档是采用“K-V”格式存储的，如果大家对JSON比较熟悉的话，我相信学mongodb是手到擒来，我们知道JSON里面Value可能是“字符串”，可能是“数组”，又有可能是内嵌的一个JSON对象，相同的方式也适合于BSON。<br>常见的插入操作也就两种形式存在：“单条插入”和“批量插入”。<br>①  单条插入先前也说了，mongo命令打开的是一个javascript shell。所以js的语法在这里面都行得通。<br><img src="/img/MongoDB/9.png" alt="Alt text"><br>② 批量插入这玩意跟“单条插入”的差异相信大家应该知道，由于mongodb中没有提供给shell的“批量插入方法”，没关系，各个语言的driver都打通了跟mongodb内部的批量插入方法，因为该方法是不可或缺的，如果非要模拟下批量插入的话，可以自己写了for循环，里面就是insert。</p>
+<p>二、Find操作</p>
+<p>日常开发中，做查询，用的最多的也就是二类：<br>①： &gt;, &gt;=, &lt;, &lt;=, !=, =   </p>
+<p><1>“$gt”, “$gte”, “$lt”, “$lte”, “$ne”, “没有特殊关键字”，这些跟上面是一一对应的。<br><img src="/img/MongoDB/10.png" alt="Alt text"><br>②：And，OR，In，NotIn  </1></p>
+<p><2> “无关键字“, “$or”, “$in”，”$nin”<br><img src="/img/MongoDB/11.png" alt="Alt text">  </2></p>
+<p><3> 在mongodb中正则表达式的使用。<br><img src="/img/MongoDB/12.png" alt="Alt text">   </3></p>
+<p><4>mongodb中也可以使用where条件。<br><img src="/img/MongoDB/13.png" alt="Alt text"></4></p>
+<p>三、Update操作</p>
+<p>更新操作无非也就两种，整体更新和局部更新，使用场合相信大家也清楚。   </p>
+<p><1> 整体更新,上一篇使用update的时候，其实那种update是属于整体更新。</1></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -172,61 +216,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/30/mongoDB/MongoDB第二篇/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/mongoDB/MongoDB第一篇/" class="archive-article-date">
-  	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/mongoDB/MongoDB第一篇/">MongoDB第一篇 -- 基础入门</a>
-    </h1>
+  
+    <a href="/2017/03/30/mongoDB/MongoDB第一篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB第一篇 -- 基础入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -249,9 +320,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

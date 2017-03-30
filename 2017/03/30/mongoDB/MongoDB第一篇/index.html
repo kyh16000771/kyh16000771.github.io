@@ -6,14 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: MongoDB | nieht</title>
+  <title>MongoDB第一篇 -- 基础入门 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="nieht">
-<meta property="og:url" content="http://yoursite.com/tags/MongoDB/index.html">
+  <meta name="description" content="一、下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB第一篇 -- 基础入门">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/mongoDB/MongoDB第一篇/index.html">
 <meta property="og:site_name" content="nieht">
+<meta property="og:description" content="一、下载">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/1.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/2.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/3.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/4.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/5.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/6.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/7.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/8.png">
+<meta property="og:updated_time" content="2017-03-30T03:00:12.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nieht">
+<meta name="twitter:title" content="MongoDB第一篇 -- 基础入门">
+<meta name="twitter:description" content="一、下载">
+<meta name="twitter:image" content="http://yoursite.com/img/MongoDB/1.png">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -127,78 +140,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mongoDB/MongoDB第一篇" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/mongoDB/MongoDB第二篇/" class="archive-article-date">
-  	<time datetime="2017-03-30T03:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/mongoDB/MongoDB第二篇/">MongoDB第二篇 -- 细说增删改查</a>
+    <h1 class="article-title" itemprop="name">
+      MongoDB第一篇 -- 基础入门
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/mongoDB/MongoDB第一篇/" class="archive-article-date">
+        
+        <a href="/2017/03/30/mongoDB/MongoDB第一篇/" class="archive-article-date">
   	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/mongoDB/MongoDB第一篇/">MongoDB第一篇 -- 基础入门</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、下载<br><a id="more"></a><br>1、上<a href="http://dl.mongodb.org/dl/win32/x86_64" target="_blank" rel="external">http://dl.mongodb.org/dl/win32/x86_64</a>  MongoDB版本网站，里面有MongoDB历史版本<br>2、32bit的mongodb最大只能存放2G的数据，64bit就没有限制。</p>
+<p>二、启动</p>
+<p>1、启动之前，我们要给mongodb指定一个文件夹，这里取名为”db”,用来存放mongodb的数据。<br><img src="/img/MongoDB/1.png" alt="Alt text"><br>2、微软徽标+R，输入cmd，首先找到“mongodb”的路径，然后运行mongod开启命令，同时用–dbpath指定数据存放地点为“db”文件夹。<br><img src="/img/MongoDB/2.png" alt="Alt text"><br>3、最后要看下是否开启成功，从图中的信息中获知，mongodb采用27017端口，那么我们就在浏览器里面键入“<a href="http://localhost:27017/”，" target="_blank" rel="external">http://localhost:27017/”，</a><br>打开后，mongodb告诉我们在27017上Add 1000可以用http模式查看mongodb的管理信息。<br><img src="/img/MongoDB/3.png" alt="Alt text"><br>4、用同样的方式打开mongodb，如果出现lock file错误，需要进入到db文件下删除就可以开启成功。</p>
+<p>三、基本操作</p>
+<p>再开一个cmd，输入mongo命令打开shell，其实这个shell就是mongodb的客户端，同时也是一个js的编译器，默认连接的是“test”数据库。<br><img src="/img/MongoDB/4.png" alt="Alt text">  </p>
+<p><1>  insert 操作<br>好，数据库有了，下一步就是集合，这里就取集合名为“person”，要注意的就是文档是一个json的扩展（Bson)形式。<br><img src="/img/MongoDB/5.png" alt="Alt text"><br> <2> find 操作<br>我们将数据插入后，肯定是要find出来，不然插了也白插，这里要注意两点：<br>“_id”： 这个字段是数据库默认给我们加的GUID，目的就是保证数据的唯一性。<br><img src="/img/MongoDB/6.png" alt="Alt text">   </2></1></p>
+<p><3> update操作<br>update方法的第一个参数为“查找的条件”，第二个参数为“更新的值”.<br><img src="/img/MongoDB/7.png" alt="Alt text">   </3></p>
+<p><4> remove操作<br>remove中如果不带参数将删除所有数据，在mongodb中是一个不可撤回的操作。<br><img src="/img/MongoDB/8.png" alt="Alt text"> </4></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -214,19 +217,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/30/mongoDB/MongoDB第一篇/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/30/mongoDB/MongoDB第二篇/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB第二篇 -- 细说增删改查
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring+Spring MVC+MyBatis整合</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -249,9 +330,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
