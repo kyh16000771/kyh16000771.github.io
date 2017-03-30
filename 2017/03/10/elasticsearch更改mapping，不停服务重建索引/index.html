@@ -8,19 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>elasticsearch更改mapping，不停服务重建索引 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
-这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这">
+  <meta name="description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="elasticsearch更改mapping，不停服务重建索引">
 <meta property="og:url" content="http://yoursite.com/2017/03/10/elasticsearch更改mapping，不停服务重建索引/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
-这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这">
-<meta property="og:updated_time" content="2017-03-10T07:54:27.344Z">
+<meta property="og:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？">
+<meta property="og:updated_time" content="2017-03-29T11:10:08.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticsearch更改mapping，不停服务重建索引">
-<meta name="twitter:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？
-这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这">
+<meta name="twitter:description" content="Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -154,10 +151,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？</p>
-<p>这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这个完全是可以做到平滑过渡的。</p>
+        <p>Elasticsearch的mapping一旦创建，只能增加字段，而不能修改已经mapping的字段。但现实往往并非如此啊，有时增加一个字段，就好像打了一个补丁，一个可以，但是越补越多，最后自己都觉得惨不忍睹了。怎么办？？<br><a id="more"></a><br>这里有一个方法修改mapping，那就是重新建立一个index，然后创建一个新的mapping。你可能会问，这要是在生产环境，可行吗？答案是，如果你一开始就采取了合适的设计，这个完全是可以做到平滑过渡的。</p>
 <p>采取什么合理设计呢？就是我们的程序访问索引库时，始终使用同义词来访问，而不要使用真正的indexName。在reindex完数据之后，修改之前的同义词即可。</p>
-<a id="more"></a>
 <p>step1、创建一个索引，这个索引的名称最好带上版本号，比如my_index_v1,my_index_v2等。</p>
 <p>step2、创建一个指向本索引的同义词。</p>
 <p>ES代码</p>
@@ -342,11 +337,11 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
   
 <nav id="article-nav">
   
-    <a href="/2017/03/10/MySQL单列索引和组合索引的区别介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/10/Spring+Spring MVC+MyBatis整合/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MySQL单列索引和组合索引的区别介绍
+          Spring+Spring MVC+MyBatis整合
         
       </div>
     </a>
@@ -449,15 +444,11 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,6 +461,18 @@ curl -XPUT localhost:9200/my_index/my_type/_mapping -d '
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">

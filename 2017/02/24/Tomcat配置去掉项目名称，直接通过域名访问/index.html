@@ -8,22 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Tomcat配置去掉项目名称，直接通过域名访问 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目开发过程中，一般的项目访问的方式是：http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢
-1、修改端口号为80将conf目录下的server.xml文件中的
-&amp;lt; Connector port=”8080” protocol=”HTTP/1.1” connectionTimeout=”">
+  <meta name="description" content="项目开发过程中，一般的项目访问的方式是：http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat配置去掉项目名称，直接通过域名访问">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/Tomcat配置去掉项目名称，直接通过域名访问/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="项目开发过程中，一般的项目访问的方式是：http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢
-1、修改端口号为80将conf目录下的server.xml文件中的
-&amp;lt; Connector port=”8080” protocol=”HTTP/1.1” connectionTimeout=”">
-<meta property="og:updated_time" content="2017-03-10T09:12:44.794Z">
+<meta property="og:description" content="项目开发过程中，一般的项目访问的方式是：http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢">
+<meta property="og:updated_time" content="2017-03-29T11:09:37.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat配置去掉项目名称，直接通过域名访问">
-<meta name="twitter:description" content="项目开发过程中，一般的项目访问的方式是：http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢
-1、修改端口号为80将conf目录下的server.xml文件中的
-&amp;lt; Connector port=”8080” protocol=”HTTP/1.1” connectionTimeout=”">
+<meta name="twitter:description" content="项目开发过程中，一般的项目访问的方式是：http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -157,8 +151,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>项目开发过程中，一般的项目访问的方式是：<a href="http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢" target="_blank" rel="external">http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢</a></p>
-<p>1、修改端口号为80<br>将conf目录下的server.xml文件中的</p>
+        <p>项目开发过程中，一般的项目访问的方式是：<a href="http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢" target="_blank" rel="external">http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢</a><br><a id="more"></a><br>1、修改端口号为80<br>将conf目录下的server.xml文件中的</p>
 <p><pre><br>&lt; Connector port=”8080” protocol=”HTTP/1.1” connectionTimeout=”20000” redirectPort=”8443” /&gt;<br></pre><br>改为</p>
 <p><pre><br>&lt; Connector port=”80” protocol=”HTTP/1.1” connectionTimeout=”20000” redirectPort=”8443” /&gt;<br></pre><br>2、去除项目名称projectName<br>在server.xml文件中，修改<host>标签，在标签中增加<context docbase="项目路径" path="">，</context></host></p>
 <p>修改后如</p>
@@ -272,18 +265,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/24/Windows下安装ELK/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/24/java foreach遍历的前提条件/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Windows下安装ELK
+          java foreach遍历的前提条件
         
       </div>
     </a>
   
   
-    <a href="/2017/02/24/java foreach遍历的前提条件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java foreach遍历的前提条件</div>
+    <a href="/2017/02/24/Windows下安装ELK/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows下安装ELK</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -379,15 +372,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -400,6 +389,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">

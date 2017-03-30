@@ -6,18 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>mybatis中#跟$的区别 | nieht</title>
+  <title>MongoDB第一天 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.">
+  <meta name="description" content="一、下载    
+1、上http://dl.mongodb.org/dl/win32/x86_64  MongoDB版本网站，里面有MongoDB历史版本
+2、32bit的mongodb最大只能存放2G的数据，64bit就没有限制。
+二、启动
+1、启动之前，我们要给mongodb指定一个文件夹，这里取名为”db”,用来存放mongodb的数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mybatis中#跟$的区别">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/mybatis/index.html">
+<meta property="og:title" content="MongoDB第一天">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/MongoDB第一天/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.">
-<meta property="og:updated_time" content="2017-03-29T11:09:00.695Z">
+<meta property="og:description" content="一、下载    
+1、上http://dl.mongodb.org/dl/win32/x86_64  MongoDB版本网站，里面有MongoDB历史版本
+2、32bit的mongodb最大只能存放2G的数据，64bit就没有限制。
+二、启动
+1、启动之前，我们要给mongodb指定一个文件夹，这里取名为”db”,用来存放mongodb的数据。">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/1.png">
+<meta property="og:updated_time" content="2017-03-30T01:48:56.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatis中#跟$的区别">
-<meta name="twitter:description" content="1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.">
+<meta name="twitter:title" content="MongoDB第一天">
+<meta name="twitter:description" content="一、下载    
+1、上http://dl.mongodb.org/dl/win32/x86_64  MongoDB版本网站，里面有MongoDB历史版本
+2、32bit的mongodb最大只能存放2G的数据，64bit就没有限制。
+二、启动
+1、启动之前，我们要给mongodb指定一个文件夹，这里取名为”db”,用来存放mongodb的数据。">
+<meta name="twitter:image" content="http://yoursite.com/img/MongoDB/1.png">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -131,30 +145,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mybatis" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MongoDB第一天" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mybatis中#跟$的区别
+      MongoDB第一天
     </h1>
   
 
         
-        <a href="/2017/02/24/mybatis/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
+        <a href="/2017/03/30/MongoDB第一天/" class="archive-article-date">
+  	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.#将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #user_id#，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”.<br><a id="more"></a><br>2.$将传入的数据直接显示生成在sql中。如：order by $user_id$，如果传入的值是111,那么解析成sql时的值为order by user_id,  如果传入的值是id，则解析成的sql为order by id.</p>
-<p>3.#方式能够很大程度防止sql注入,$方式无法防止Sql注入。</p>
-<p>4.$方式一般用于传入数据库对象，例如传入表名.一般能用#的就别用$.</p>
-<p>5.MyBatis排序时使用order by 动态参数时需要注意，用$而不是#</p>
+        <p>一、下载    </p>
+<p>1、上<a href="http://dl.mongodb.org/dl/win32/x86_64" target="_blank" rel="external">http://dl.mongodb.org/dl/win32/x86_64</a>  MongoDB版本网站，里面有MongoDB历史版本</p>
+<p>2、32bit的mongodb最大只能存放2G的数据，64bit就没有限制。</p>
+<p>二、启动</p>
+<p>1、启动之前，我们要给mongodb指定一个文件夹，这里取名为”db”,用来存放mongodb的数据。</p>
+<p><img src="/img/MongoDB/1.png" alt="Alt text"></p>
 
       
 
@@ -194,7 +210,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
         		</li>
       		
 		</ul>
@@ -250,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/24/mybatis/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/30/MongoDB第一天/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -264,18 +284,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/24/Java中List 去掉重复的值，并保持原先List顺序/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java中List 去掉重复的值，并保持原先List顺序
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/24/SpringMVC @RequestBody接收Json对象字符串/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringMVC @RequestBody接收Json对象字符串</div>
+    <a href="/2017/03/10/Spring+Spring MVC+MyBatis整合/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring+Spring MVC+MyBatis整合</div>
       <i class="icon-circle-right"></i>
     </a>
   

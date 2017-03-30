@@ -8,22 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Windows下安装ELK | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装java JDK
-
-下载jdk，http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-windows-x64.exe安装即可">
+  <meta name="description" content="安装java JDK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows下安装ELK">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/Windows下安装ELK/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="安装java JDK
-
-下载jdk，http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-windows-x64.exe安装即可">
-<meta property="og:updated_time" content="2017-03-10T07:54:18.356Z">
+<meta property="og:description" content="安装java JDK">
+<meta property="og:updated_time" content="2017-03-29T11:10:28.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下安装ELK">
-<meta name="twitter:description" content="安装java JDK
-
-下载jdk，http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-windows-x64.exe安装即可">
+<meta name="twitter:description" content="安装java JDK">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -158,10 +152,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>安装java JDK</p>
+<a id="more"></a>
 <blockquote>
 <p>下载jdk，<a href="http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-windows-x64.exe" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-windows-x64.exe</a><br>安装即可</p>
 </blockquote>
-<a id="more"></a>
 <p>配置JDK环境变量</p>
 <blockquote>
 <p>右键我的电脑属性高级系统设置高级环境变量。<br>在用户变量中新建Java_Home(如果已经存在，则忽略)，输入值为 jdk的安装目录 比如 C:\Program Files\Java\jdk1.8.0_65(注意是32位还是64位，根据系统的版本确定)。<br>在用户变量中新建 CLASSPATH (如果存在，则编辑)，输入<br>%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar(如果存在，则忽略，注意字符前的 ; 符号)<br>在系统变量中找到Path变量，进行编辑。<br>在最后加上 %JAVA_HOME%\bin (注意，如果已经存在，则忽略。另外，注意在字符前需要有 ; 符号，如果已经存在则忽略)</p>
@@ -376,20 +370,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/24/SpringMVC @RequestBody接收Json对象字符串/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/24/Tomcat配置去掉项目名称，直接通过域名访问/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          SpringMVC @RequestBody接收Json对象字符串
+          Tomcat配置去掉项目名称，直接通过域名访问
         
       </div>
     </a>
   
-  
-    <a href="/2017/02/24/Tomcat配置去掉项目名称，直接通过域名访问/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Tomcat配置去掉项目名称，直接通过域名访问</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -483,15 +472,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,6 +489,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
