@@ -19,7 +19,11 @@
 <meta property="og:image" content="http://yoursite.com/img/MongoDB/11.png">
 <meta property="og:image" content="http://yoursite.com/img/MongoDB/12.png">
 <meta property="og:image" content="http://yoursite.com/img/MongoDB/13.png">
-<meta property="og:updated_time" content="2017-03-30T03:20:38.661Z">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/14.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/15.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/16.png">
+<meta property="og:image" content="http://yoursite.com/img/MongoDB/17.png">
+<meta property="og:updated_time" content="2017-03-30T03:31:20.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB第二篇 -- 细说增删改查">
 <meta name="twitter:description" content="一、Insert操作">
@@ -166,7 +170,9 @@
 <p><4>mongodb中也可以使用where条件。<br><img src="/img/MongoDB/13.png" alt="Alt text"></4></p>
 <p>三、Update操作</p>
 <p>更新操作无非也就两种，整体更新和局部更新，使用场合相信大家也清楚。   </p>
-<p><1> 整体更新,上一篇使用update的时候，其实那种update是属于整体更新。</1></p>
+<p><1> 整体更新,上一篇使用update的时候，其实那种update是属于整体更新。<br><img src="/img/MongoDB/14.png" alt="Alt text">  </1></p>
+<p><2> 局部更新<br>有时候我们仅仅需要更新一个字段，而不是整体更新,mongodb中已经给我们提供了两个修改器： $inc 和 $set。<br>①  $inc修改器<br>$inc也就是increase的缩写,比如我们做一个在线用户状态记录，每次修改会在原有的基础上自增$inc指定的值，如果“文档”中没有此key，则会创建key。<br><img src="/img/MongoDB/15.png" alt="Alt text"><br>② $set修改器<br><img src="/img/MongoDB/16.png" alt="Alt text">   </2></p>
+<p><3> upsert操作<br>这个可是mongodb创造出来的“词”,那么这个upsert操作就是说：如果我<br>没有查到，我就在数据库里面新增一条，其实这样也有好处，就是避免了我在数据库里面判断是update还是add操作，使用起来很简单将update的第三个参数设为true即可。<br><img src="/img/MongoDB/17.png" alt="Alt text">   </3></p>
 
       
 
@@ -280,6 +286,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/03/30/mongoDB/MongoDB第三篇/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MongoDB第三篇 -- 细说高级操作
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/03/30/mongoDB/MongoDB第一篇/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">MongoDB第一篇 -- 基础入门</div>
@@ -378,14 +393,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
@@ -399,6 +406,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web前端</a>
               </li>
              
               <li class="article-tag-list-item">
