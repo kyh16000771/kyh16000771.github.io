@@ -401,6 +401,84 @@
 
 
   
+    <article id="post-mongoDB/MongoDB番外篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB番外篇/">MongoDB番外篇</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/30/mongoDB/MongoDB番外篇/" class="archive-article-date">
+  	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、如何创建用户管理员</p>
+<p>用户管理员是第一个要创建的用户。在没有创建任何用户之前，你可以随意创建用户；但数据库中一旦有了用户，那么未登录的客户端就没有权限做任何操作了，除非使用db.auth(username, password)方法登录。</p>
+<p>用户管理员的角色名叫 userAdminAnyDatabase，这个角色只能在 admin 数据库中创建。下面是一个例子：</p>
+<p>|&gt; use admin<br>switched to db admin<br>|&gt; db.createUser({user:”root”,pwd:”root123”,roles:[“userAdminAnyDatabase”]})<br>Successfully added user: { “user” : “root”, “roles” : [ “userAdminAnyDatabase” ] }   </p>
+<p>这个例子创建了一个名为 root 的用户管理员。创建完了这个用户之后，我们应该马上以该用户的身份登录：</p>
+<p>|&gt; db.auth(“root”,”root123”)<br>1<br>db.auth() 方法返回 1 表示登录成功。接下来我们为指定的数据库创建访问所需的账号。   </p>
+<p>二、如何创建数据库用户</p>
+<p>首先保证你已经以用户管理员的身份登录 admin 数据库。然后用 use 命令切换到目标数据库，同样用 db.createUser() 命令来创建用户，其中角色名为 “readWrite”。</p>
+<p>普通的数据库用户角色有两种，read 和 readWrite。顾名思义，前者只能读取数据不能修改，后者可以读取和修改。<br>下面是一个例子：</p>
+<p>|&gt; use test<br>switched to db test<br>|&gt; db.createUser({user:”testuser”,pwd:”testpass”,roles:[“readWrite”]})<br>Successfully added user: { “user” : “testuser”, “roles” : [ “readWrite” ] }<br>|&gt; db.auth(“testuser”,”testpass”)<br>1</p>
+<p>这样 MongoDB 的数据安全性就得到保障了，没有登录的客户端将无法执行任何命令。</p>
+<p>修改用户密码<br>use admin<br>db.changeUserPassword(“username”, “xxx”)</p>
+<p>查看用户信息<br>db.runCommand({usersInfo:”userName”})</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB番外篇/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-spring/Spring+Spring MVC+MyBatis整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -458,74 +536,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JQuery/使用JQuery获取对象的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/">使用JQuery获取对象的几种方式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、先讲讲JQuery的概念<br>
-        
-          <a class="article-more-a" href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/">展开全文 >></a>
         </p>
       
 
@@ -679,6 +689,74 @@
 
 
   
+    <article id="post-JQuery/使用JQuery获取对象的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/">使用JQuery获取对象的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/" class="archive-article-date">
+  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、先讲讲JQuery的概念<br>
+        
+          <a class="article-more-a" href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-elasticsearch/Windows下安装ELK" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -730,70 +808,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/24/elasticsearch/Windows下安装ELK/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Tomcat/Tomcat配置去掉项目名称，直接通过域名访问" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/Tomcat/Tomcat配置去掉项目名称，直接通过域名访问/">Tomcat配置去掉项目名称，直接通过域名访问</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/24/Tomcat/Tomcat配置去掉项目名称，直接通过域名访问/" class="archive-article-date">
-  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>项目开发过程中，一般的项目访问的方式是：<a href="http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢">http://ip:端口号/projectName，项目上线后，往往只需要输入域名就可以访问项目，在URL中过滤掉了项目名称，Tomcat中如何实现如上配置呢</a><br>
-        
-          <a class="article-more-a" href="/2017/02/24/Tomcat/Tomcat配置去掉项目名称，直接通过域名访问/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/24/Tomcat/Tomcat配置去掉项目名称，直接通过域名访问/">展开全文 >></a>
         </p>
       
 
@@ -896,7 +910,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,15 +926,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web前端</a>
               </li>
              
               <li class="article-tag-list-item">
