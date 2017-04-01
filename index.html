@@ -333,19 +333,19 @@
 
 
   
-    <article id="post-mongoDB/MongoDB如何创建用户3.X以上版本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mongoDB/MongoDB第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/">MongoDB如何创建用户</a>
+      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB第一篇/">MongoDB第一篇 -- 基础入门</a>
     </h1>
   
 
         
-        <a href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/" class="archive-article-date">
+        <a href="/2017/03/30/mongoDB/MongoDB第一篇/" class="archive-article-date">
   	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
 </a>
         
@@ -353,19 +353,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MongoDB3.0+的权限，网上搜出来的解决方法都是3.0以下的版本的，所以不适合3.0+以上的版本，由于这版本改变的有些大，解决了很久，终于解决，下面把解决的步骤记录下来。<br>一、不使用 –auth<br>1.首先，不使用–auth参数启动MongoDB</p>
-<p><pre><br>访问到MongoDB服务bin路径下</pre></p>
-<blockquote>
-<p>cd F:\mongodb\bin<br>启动mongodb服务<br>cd F:\mongodb\bin&gt;mongod –dbpath=F:\mongodb\db<br><br>2.服务启动之后打开新窗口，在命令窗口输入：</p>
-<p><pre><br>show dbs<br></pre><br>看到只有一个local数据库，admin是不存在的(这是3.0以上版本改变了的)，我们需要自己给他创建个admin数据库。<br>3.添加管理用户</p>
-<p><pre><br>use admin<br>db.createUser(<br>  {<br>    user: “admin”,<br>pwd: “admin”,<br>    roles: [ { role: “userAdminAnyDatabase”, db: “admin” } ]<br>  }<br>)<br></pre><br>roles 中的 db 参数是必须的，不然会报错：Error: couldn’t add user: Missing expected field “db”。另外，有很多文章记录的是使用 db.addUser(…) 方法，这个方法是旧版的，3.0中已经不存在。详细：<a><a href="https://docs.mongodb.com/manual/reference/method/js-user-management/" target="_blank" rel="external">https://docs.mongodb.com/manual/reference/method/js-user-management/</a></a><br>4.切换到admin下，查看刚才创建的用户：</p>
-<p><pre><br>show users<br>或<br>db.system.users.find()<br></pre><br><img src="/img/MongoDB/a2.png" alt="Alt text"><br>关闭mongo，可以window+c键关闭<br>二、使用 –auth<br>1.再次打开mongo shell：</p>
-<p><pre><br>use admin<br>db.auth(“nieht”,”123456”) </pre></p>
-<p>#认证，返回1表示成功<br><br>2.查看整个mongoDB全部的用户：</p>
-<p><pre><br>use admin<br>db.system.users.find()<br></pre><br><img src="/img/MongoDB/a2.png" alt="Alt text"><br>3.创建完成，验证一下</p>
-<p><pre><br>use admin<br>show collections<br></pre><br><img src="/img/MongoDB/a3.png" alt="Alt text"><br>完成~！</p>
-</blockquote>
-
+        <p>一、下载<br>
+        
+          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第一篇/#more">more >></a>
+        
       
 
       
@@ -392,7 +383,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第一篇/">展开全文 >></a>
         </p>
       
 
@@ -478,19 +469,19 @@
 
 
   
-    <article id="post-mongoDB/MongoDB第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mongoDB/MongoDB如何创建用户3.X以上版本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB第一篇/">MongoDB第一篇 -- 基础入门</a>
+      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/">MongoDB如何创建用户</a>
     </h1>
   
 
         
-        <a href="/2017/03/30/mongoDB/MongoDB第一篇/" class="archive-article-date">
+        <a href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/" class="archive-article-date">
   	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
 </a>
         
@@ -498,9 +489,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、下载<br>
+        <p>MongoDB3.0+的权限，网上搜出来的解决方法都是3.0以下的版本的，所以不适合3.0+以上的版本，由于这版本改变的有些大，解决了很久，终于解决，下面把解决的步骤记录下来。<br>
         
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第一篇/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/#more">more >></a>
         
       
 
@@ -528,7 +519,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第一篇/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/">展开全文 >></a>
         </p>
       
 
@@ -620,74 +611,6 @@
 
 
   
-    <article id="post-mysql/MySQL单列索引和组合索引的区别介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/">MySQL单列索引和组合索引的区别介绍</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MySQL单列索引是我们使用MySQL数据库中经常会见到的，MySQL单列索引和组合索引的区别可能有很多人还不是十分的了解，下面就为您分析两者的主要区别，供您参考学习。</p>
-        
-          <a class="article-more-a" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-elasticsearch/elasticsearch更改mapping，不停服务重建索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -739,6 +662,74 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/10/elasticsearch/elasticsearch更改mapping，不停服务重建索引/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-mysql/MySQL单列索引和组合索引的区别介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/">MySQL单列索引和组合索引的区别介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/" class="archive-article-date">
+  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL单列索引是我们使用MySQL数据库中经常会见到的，MySQL单列索引和组合索引的区别可能有很多人还不是十分的了解，下面就为您分析两者的主要区别，供您参考学习。</p>
+        
+          <a class="article-more-a" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/">展开全文 >></a>
         </p>
       
 
@@ -909,7 +900,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -921,27 +916,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ES</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -958,6 +937,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
             
             <div class="clearfix"></div>
