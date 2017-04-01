@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/02/24/elasticsearch/Windows下安装ELK/index.html">
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="安装java JDK">
-<meta property="og:updated_time" content="2017-03-29T11:10:28.957Z">
+<meta property="og:updated_time" content="2017-03-30T10:35:03.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下安装ELK">
 <meta name="twitter:description" content="安装java JDK">
@@ -189,11 +189,11 @@
 <p>node.master: true</p>
 <p>指定该节点是否有资格被选举成为node，默认是true，es是默认集群中的第一台机器为master，如果这台机挂了就会重新选举master。</p>
 <p>node.data: true</p>
-<p>指定该节点是否存储索引数据，默认为true。</p>
+<p>指定该节点是否存储索引数据，默认为true。如果节点配置node.master:false并且node.data: false，则该节点将起到负载均衡的作用</p>
 <p>index.number_of_shards: 5</p>
-<p>设置默认索引分片个数，默认为5片。</p>
+<p>设置默认索引分片个数，默认为5片。经本人测试，索引分片对ES的查询性能有很大的影响，在应用环境，应该选择适合的分片大小。</p>
 <p>index.number_of_replicas: 1</p>
-<p>设置默认索引副本个数，默认为1个副本。</p>
+<p>设置默认索引副本个数，默认为1个副本。此处的1个副本是指index.number_of_shards的一个完全拷贝；默认5个分片1个拷贝；即总分片数为10。</p>
 <p>path.conf: /path/to/conf</p>
 <p>设置配置文件的存储路径，默认是es根目录下的config文件夹。</p>
 <p>path.data: /path/to/data</p>
@@ -245,7 +245,15 @@
 <p>discovery.zen.ping.multicast.enabled: false</p>
 <p>设置是否打开多播发现节点，默认是true。</p>
 <p>discovery.zen.ping.unicast.hosts: [“host1”, “host2:port”, “host3[portX-portY]”]</p>
-<p>设置集群中master节点的初始列表，可以通过这些节点来自动发现新加入集群的节点。<br>下面是一些查询时的慢日志参数设置</p>
+<p>设置集群中master节点的初始列表，可以通过这些节点来自动发现新加入集群的节点。</p>
+<p>threadpool:<br>    search:<br>        type: fixed<br>        min: 60<br>        max: 80<br>        queue_size: 1000<br>配置es服务器的执行查询操作时所用线程池，fix固定线程数的线程池。   </p>
+<p>index :<br>    store:<br>        type: memory</p>
+<p>表示索引存储在内存中，当然es不太建议这么做。经本人测试，做查询时，使用内存索引并不会比正常的索引快。</p>
+<p>index.mapper.dynamic: false</p>
+<p>禁止自动创建mapping。默认情况下，es可以根据数据类型自动创建mapping。配置成这样，可以禁止自动创建mapping的行为   </p>
+<p>index.query.parse.allow_unmapped_fields: false   </p>
+<p>不能查找没有在mapping中定义的属性    </p>
+<p>下面是一些查询时的慢日志参数设置</p>
 <p>index.search.slowlog.level: TRACE</p>
 <p>index.search.slowlog.threshold.query.warn: 10s</p>
 <p>index.search.slowlog.threshold.query.info: 5s</p>
@@ -370,20 +378,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/24/spring/SpringMVC @RequestBody接收Json对象字符串/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          使用JQuery获取对象的几种方式
+          SpringMVC @RequestBody接收Json对象字符串
         
       </div>
     </a>
   
-  
-    <a href="/2017/02/24/java/java foreach遍历的前提条件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java foreach遍历的前提条件</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -477,6 +480,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
@@ -493,7 +500,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,18 +529,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
             
             <div class="clearfix"></div>
