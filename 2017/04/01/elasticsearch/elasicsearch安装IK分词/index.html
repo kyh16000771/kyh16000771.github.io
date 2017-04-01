@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>MySQL单列索引和组合索引的区别介绍 | nieht</title>
+  <title>elasticsearch安装IK分词 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MySQL单列索引是我们使用MySQL数据库中经常会见到的，MySQL单列索引和组合索引的区别可能有很多人还不是十分的了解，下面就为您分析两者的主要区别，供您参考学习。">
+  <meta name="description" content="ES安装IK分词，查看了网上很多人写的方案，可能由于是版本的问题，并没有安装成功，期间出现了很多的问题，自己终于摸索出来，记录下安装步骤：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL单列索引和组合索引的区别介绍">
-<meta property="og:url" content="http://yoursite.com/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/index.html">
+<meta property="og:title" content="elasticsearch安装IK分词">
+<meta property="og:url" content="http://yoursite.com/2017/04/01/elasticsearch/elasicsearch安装IK分词/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="MySQL单列索引是我们使用MySQL数据库中经常会见到的，MySQL单列索引和组合索引的区别可能有很多人还不是十分的了解，下面就为您分析两者的主要区别，供您参考学习。">
-<meta property="og:updated_time" content="2017-03-29T10:30:03.387Z">
+<meta property="og:description" content="ES安装IK分词，查看了网上很多人写的方案，可能由于是版本的问题，并没有安装成功，期间出现了很多的问题，自己终于摸索出来，记录下安装步骤：">
+<meta property="og:image" content="http://yoursite.com/img/elasticsearch/1.png">
+<meta property="og:updated_time" content="2017-04-01T03:43:05.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL单列索引和组合索引的区别介绍">
-<meta name="twitter:description" content="MySQL单列索引是我们使用MySQL数据库中经常会见到的，MySQL单列索引和组合索引的区别可能有很多人还不是十分的了解，下面就为您分析两者的主要区别，供您参考学习。">
+<meta name="twitter:title" content="elasticsearch安装IK分词">
+<meta name="twitter:description" content="ES安装IK分词，查看了网上很多人写的方案，可能由于是版本的问题，并没有安装成功，期间出现了很多的问题，自己终于摸索出来，记录下安装步骤：">
+<meta name="twitter:image" content="http://yoursite.com/img/elasticsearch/1.png">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -131,92 +133,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mysql/MySQL单列索引和组合索引的区别介绍" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-elasticsearch/elasicsearch安装IK分词" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL单列索引和组合索引的区别介绍
+      elasticsearch安装IK分词
     </h1>
   
 
         
-        <a href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+        <a href="/2017/04/01/elasticsearch/elasicsearch安装IK分词/" class="archive-article-date">
+  	<time datetime="2017-04-01T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MySQL单列索引是我们使用MySQL数据库中经常会见到的，MySQL单列索引和组合索引的区别可能有很多人还不是十分的了解，下面就为您分析两者的主要区别，供您参考学习。</p>
-<a id="more"></a>
-<p>为了形象地对比两者，再建一个表：</p>
-<p>mysql代码</p>
-<pre>
-CREATE TABLE myIndex (
-i_testID INT NOT NULL AUTO_INCREMENT, 
-vc_Name VARCHAR(50) NOT NULL, 
-vc_City VARCHAR(50) NOT NULL, 
-i_Age INT NOT NULL, 
-i_SchoolID INT NOT NULL, 
-PRIMARY KEY (i_testID) ); 
-</pre>
-
-<p>在这 10000 条记录里面有5 条 vc_Name=”erquan” 的记录，只不过 city,age,school 的组合各不相同。<br>来看这条T-SQL：</p>
-<p>mysql代码</p>
-<pre>
-SELECT i_testID FROM myIndex WHERE vc_Name='erquan' AND vc_City='郑州' AND i_Age=25; 
-</pre>
-
-<p>首先考虑建MySQL单列索引：</p>
-<p>在vc_Name列上建立了索引。执行 T-SQL 时，MYSQL 很快将目标锁定在了vc_Name=erquan 的 5 条记录上，取出来放到一中间结果集。在这个结果集里，先排除掉 vc_City 不等于”郑州”的记录，再排除 i_Age 不等于 25 的记录，最后筛选出唯一的符合条件的记录。</p>
-<p>虽然在 vc_Name 上建立了索引，查询时MYSQL不用扫描整张表，效率有所提高，但离我们的要求还有一定的距离。同样的，在 vc_City 和 i_Age 分别建立的MySQL单列索引的效率相似。</p>
-<p>为了进一步榨取 MySQL 的效率，就要考虑建立组合索引。就是将 vc_Name,vc_City，i_Age 建到一个索引里：</p>
-<p>mysql代码</p>
-<pre>
-ALTER TABLE myIndex ADD INDEX name_city_age (vc_Name(10),vc_City,i_Age); 
-</pre>
-
-<p>建表时，vc_Name 长度为 50，这里为什么用 10 呢？因为一般情况下名字的长度不会超过 10，这样会加速索引查询速度，还会减少索引文件的大小，提高 INSERT 的更新速度。</p>
-<p>执行 T-SQL 时，MySQL 无须扫描任何记录就到找到唯一的记录。</p>
-<p>肯定有人要问了，如果分别在 vc_Name,vc_City，i_Age 上建立单列索引，让该表有 3 个单列索引，查询时和上述的组合索引效率一样吗？大不一样，远远低于我们的组合索引。虽然此时有了三个索引，但 MySQL 只能用到其中的那个它认为似乎是最有效率的单列索引。</p>
-<p>建立这样的组合索引，其实是相当于分别建立了</p>
-<p>mysql代码</p>
-<pre>
-1. vc_Name,vc_City,i_Age  
-2. vc_Name,vc_City  
-3. vc_Name 
-</pre>
-
-<p>这样的三个组合索引！为什么没有 vc_City，i_Age 等这样的组合索引呢？这是因为 mysql 组合索引“最左前缀”的结果。简单的理解就是只从最左面的开始组合。并不是只要包含这三列的查询都会用到该组合索引，下面的几个 T-SQL 会用到：</p>
-<p>mysql代码</p>
-<pre>
-SELECT * FROM myIndex WHREE vc_Name="erquan" AND vc_City="郑州" 
-SELECT * FROM myIndex WHREE vc_Name="erquan" 
-</pre>
-
-<p>而下面几个则不会用到：</p>
-<pre>
-SELECT * FROM myIndex WHREE i_Age=20 AND vc_City="郑州" 
-SELECT * FROM myIndex WHREE vc_City="郑州" 
-</pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <p>ES安装IK分词，查看了网上很多人写的方案，可能由于是版本的问题，并没有安装成功，期间出现了很多的问题，自己终于摸索出来，记录下安装步骤：<br><a id="more"></a><br>1、到github网站下载源代码，网站地址为：<a href="https://github.com/medcl/elasticsearch-analysis-ik/releases" target="_blank" rel="external">https://github.com/medcl/elasticsearch-analysis-ik/releases</a> 里面有IK分词历史版本，根据自己ES版本进行选择<br><img src="/img/elasticsearch/1.png" alt="Alt text"><br>下载第一个ZIP解压之后是maven编译好的，第二个需要自己手动编译 执行maven命令 mvn pageage<br>2.讲编译好的文件解压在es\plugins\ik目录下。<br>3.从新启动es服务就可以了。</p>
+<p>注：IK分词可以在IKAnalyzer.cfg.xml文件中扩展所需要的分词字典。</p>
+<p>总结：网上很多都有写需要在在ES的配置文件config/elasticsearch.yml中增加ik的配置，其实是完全不需要的，如果需要可能是版本比较底，经过本人测试，在2.0.0之后的版本完全不需要多余的配置。</p>
 
       
 
@@ -256,11 +195,11 @@ SELECT * FROM myIndex WHREE vc_City="郑州"
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
         		</li>
       		
 		</ul>
@@ -316,7 +255,7 @@ SELECT * FROM myIndex WHREE vc_City="郑州"
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/01/elasticsearch/elasicsearch安装IK分词/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -330,18 +269,9 @@ SELECT * FROM myIndex WHREE vc_City="郑州"
   
 <nav id="article-nav">
   
-    <a href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Spring+Spring MVC+MyBatis整合
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/10/JQuery/使用JQuery获取对象的几种方式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用JQuery获取对象的几种方式</div>
+    <a href="/2017/03/30/mongoDB/MongoDB第四篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB第四篇 -- 索引操作</div>
       <i class="icon-circle-right"></i>
     </a>
   
