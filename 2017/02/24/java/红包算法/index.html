@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>nieht</title>
+  <title>java 红包算法 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做自己爱做的事，爱自己在做的事！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="nieht">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="红包算法,直接上代码：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java 红包算法">
+<meta property="og:url" content="http://yoursite.com/2017/02/24/java/红包算法/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="做自己爱做的事，爱自己在做的事！">
+<meta property="og:description" content="红包算法,直接上代码：">
+<meta property="og:updated_time" content="2017-04-06T08:41:49.265Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nieht">
-<meta name="twitter:description" content="做自己爱做的事，爱自己在做的事！">
+<meta name="twitter:title" content="java 红包算法">
+<meta name="twitter:description" content="红包算法,直接上代码：">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -130,34 +131,148 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-elasticsearch/elasticsearch-java应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-java/红包算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/elasticsearch/elasticsearch-java应用/">elasticsearch-java简单应用实例</a>
+    <h1 class="article-title" itemprop="name">
+      java 红包算法
     </h1>
   
 
         
-        <a href="/2017/04/06/elasticsearch/elasticsearch-java应用/" class="archive-article-date">
-  	<time datetime="2017-04-06T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
+        <a href="/2017/02/24/java/红包算法/" class="archive-article-date">
+  	<time datetime="2017-02-24T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>pom文件：<br>
-        
-          <a class="article-more-a" href="/2017/04/06/elasticsearch/elasticsearch-java应用/#more">more >></a>
-        
+        <p>红包算法,直接上代码：<br><a id="more"></a></p>
+<pre>
+public class RedPacketUtil {
+    // 最小红包额度
+    private static final int MINMONEY = 1;
+    // 最大红包额度
+    private static final int MAXMONEY = 200 * 100;
+    // 每个红包最大是平均值的倍数
+    private static final double TIMES = 2.1;
+
+    /**
+     * @param money
+     * @param count
+     * @return
+     * @Author:lulei
+     * @Description: 拆分红包
+     */
+    public List<integer> splitRedPackets(int money, int count) {
+        if (!isRight(money, count)) {
+            return null;
+        }
+        List<integer> list = new ArrayList<integer>();
+        // 红包最大金额为平均金额的TIMES倍
+        int max = (int) (money * TIMES / count);
+        max = max > MAXMONEY ? MAXMONEY : max;
+        for (int i = 0; i < count; i++) {
+            int one = random(money, MINMONEY, max, count - i);
+            list.add(one);
+            money -= one;
+        }
+        return list;
+    }
+
+    /**
+     * @param money
+     * @param minS
+     * @param maxS
+     * @param count
+     * @return
+     * @Author:lulei
+     * @Description: 随机红包额度
+     */
+    private int random(int money, int minS, int maxS, int count) {
+        // 红包数量为1，直接返回金额
+        if (count == 1) {
+            return money;
+        }
+        // 如果最大金额和最小金额相等，直接返回金额
+        if (minS == maxS) {
+            return minS;
+        }
+        int max = maxS > money ? money : maxS;
+        // 分配红包正确情况，允许红包的最大值
+        int maxY = money - (count - 1) * minS;
+        // 分配红包正确情况，允许红包的最小值
+        int minY = money - (count - 1) * maxS;
+        // 随机产生红包的最小值
+        int min = minY > minS ? minY : minS;
+        // 随机产生红包最大值
+        max = maxY < max ? maxY : max;
+        // 随机产生一个红包
+        return (int) Math.rint(Math.random() * (max - min) + min);
+    }
+
+    /**
+     * @param money
+     * @param count
+     * @return
+     * @Author:lulei
+     * @Description: 此种红包是否合法
+     */
+    private boolean isRight(int money, int count) {
+        double avg = money / count;
+        if (avg < MINMONEY) {
+            return false;
+        }
+        if (avg > MAXMONEY) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        RedPacketUtil util = new RedPacketUtil();
+        List l = util.splitRedPackets(10, 2);
+        System.out.println("最大值==>" + Collections.max(l));
+        System.out.println(l.get(0));
+        System.out.println(l);
+    }
+
+}
+
+</integer></integer></integer></pre>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -168,11 +283,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -181,18 +292,83 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/06/elasticsearch/elasticsearch-java应用/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/24/java/红包算法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL单列索引和组合索引的区别介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/24/java/java foreach遍历的前提条件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java foreach遍历的前提条件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -200,629 +376,10 @@
 
 
   
-    <article id="post-mongoDB/MongoDB基本命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/mongoDB/MongoDB基本命令/">MongoDB基本命令</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2017/04/05/mongoDB/MongoDB基本命令/" class="archive-article-date">
-  	<time datetime="2017-04-05T01:54:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MONGODB基本命令用<br>
-        
-          <a class="article-more-a" href="/2017/04/05/mongoDB/MongoDB基本命令/#more">more >></a>
-        
-      
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/05/mongoDB/MongoDB基本命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-elasticsearch/elasicsearch安装IK分词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/01/elasticsearch/elasicsearch安装IK分词/">elasticsearch安装IK分词</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/01/elasticsearch/elasicsearch安装IK分词/" class="archive-article-date">
-  	<time datetime="2017-04-01T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ES安装IK分词，查看了网上很多人写的方案，可能由于是版本的问题，并没有安装成功，期间出现了很多的问题，自己终于摸索出来，记录下安装步骤：<br>
-        
-          <a class="article-more-a" href="/2017/04/01/elasticsearch/elasicsearch安装IK分词/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/01/elasticsearch/elasicsearch安装IK分词/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mongoDB/MongoDB第四篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB第四篇/">MongoDB第四篇 -- 索引操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/mongoDB/MongoDB第四篇/" class="archive-article-date">
-  	<time datetime="2017-03-30T06:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mongodb中关于索引的基本操作，首先插入10w数据<br>
-        
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第四篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第四篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mongoDB/MongoDB第三篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB第三篇/">MongoDB第三篇 -- 细说高级操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/mongoDB/MongoDB第三篇/" class="archive-article-date">
-  	<time datetime="2017-03-30T03:41:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、聚合操作<br>
-        
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第三篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第三篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mongoDB/MongoDB第二篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB第二篇/">MongoDB第二篇 -- 细说增删改查</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/mongoDB/MongoDB第二篇/" class="archive-article-date">
-  	<time datetime="2017-03-30T03:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、Insert操作<br>
-        
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第二篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第二篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mongoDB/MongoDB如何创建用户3.X以上版本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/">MongoDB如何创建用户</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/" class="archive-article-date">
-  	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MongoDB3.0+的权限，网上搜出来的解决方法都是3.0以下的版本的，所以不适合3.0+以上的版本，由于这版本改变的有些大，解决了很久，终于解决，下面把解决的步骤记录下来。<br>
-        
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户3.X以上版本/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mongoDB/MongoDB第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB第一篇/">MongoDB第一篇 -- 基础入门</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/mongoDB/MongoDB第一篇/" class="archive-article-date">
-  	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、下载<br>
-        
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第一篇/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB第一篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mongoDB/MongoDB如何创建用户" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/mongoDB/MongoDB如何创建用户/">MongoDB如何创建用户</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/mongoDB/MongoDB如何创建用户/" class="archive-article-date">
-  	<time datetime="2017-03-30T01:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、如何创建用户管理员<br>
-        
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/mongoDB/MongoDB如何创建用户/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-spring/Spring+Spring MVC+MyBatis整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/">Spring+Spring MVC+MyBatis整合</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/" class="archive-article-date">
-  	<time datetime="2017-03-10T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.1设计思想</p>
-<blockquote>
-<p>使用JSP作为展示层，spring作为控制器，用户发送请求时，使用Spring MVC找到对应的处理请求的Action，经过业务逻辑层到持久层(MyBatis)与数据库交互，最后返回给用户<br>
-        
-          <a class="article-more-a" href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springMVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/spring/Spring+Spring MVC+MyBatis整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -844,8 +401,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
