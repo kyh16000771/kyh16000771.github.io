@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 数据库 | nieht</title>
+  <title>POI 导出工具类 | nieht</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做自己爱做的事，爱自己在做的事！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="nieht">
-<meta property="og:url" content="http://yoursite.com/tags/数据库/index.html">
+  <meta name="description" content="POI 导出工具类,直接上代码：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POI 导出工具类">
+<meta property="og:url" content="http://yoursite.com/2017/04/10/工具类/poi导出Excel/index.html">
 <meta property="og:site_name" content="nieht">
-<meta property="og:description" content="做自己爱做的事，爱自己在做的事！">
+<meta property="og:description" content="POI 导出工具类,直接上代码：">
+<meta property="og:updated_time" content="2017-04-10T10:16:04.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nieht">
-<meta name="twitter:description" content="做自己爱做的事，爱自己在做的事！">
+<meta name="twitter:title" content="POI 导出工具类">
+<meta name="twitter:description" content="POI 导出工具类,直接上代码：">
   
     <link rel="alternative" href="/atom.xml" title="nieht" type="application/atom+xml">
   
@@ -130,64 +131,270 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-工具类/poi导出Excel" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/" class="archive-article-date">
-  	<time datetime="2017-03-10T07:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/mysql/MySQL单列索引和组合索引的区别介绍/">MySQL单列索引和组合索引的区别介绍</a>
+    <h1 class="article-title" itemprop="name">
+      POI 导出工具类
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/10/工具类/poi导出Excel/" class="archive-article-date">
+  	<time datetime="2017-04-10T10:35:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>POI 导出工具类,直接上代码：<br><a id="more"></a></p>
+<pre>
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+
+public class ExportExcelUtil {
+    /**
+     * 对list数据源将其里面的数据导入到excel表单
+     * 
+     * @param fieldName
+     *            [] 导出到excel文件里的表头名
+     * @param columnIt
+     *            [] 导出到excel文件里的表头NAME
+     * @param sheetName
+     *            工作表的名称
+     * @param sheetSize
+     *            每个sheet中数据的行数,此数值必须小于65536
+     * @param output
+     *            java输出流
+     */
+    public static boolean exportExcel(List list, String[] fieldName, Object[] columnIt, String sheetName, int sheetSize,
+            OutputStream output) {
+        HSSFWorkbook workbook = new HSSFWorkbook();// 产生工作薄对象
+        if (sheetSize >= 65536) {
+            sheetSize = 65536;
+        }
+        double sheetNo = Math.ceil(list.size() / sheetSize);
+
+        HSSFSheet sheet = workbook.createSheet();// 产生工作表对象
+        HSSFRow row = sheet.createRow(0);// 产生一行
+        HSSFCell cell;// 产生单元格
+
+        // 创建[列首]样式
+        HSSFCellStyle headersStyle = workbook.createCellStyle();
+        // 设置[列首]样式
+        headersStyle.setFillForegroundColor(HSSFColor.LIGHT_GREEN.index);
+        headersStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+        headersStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+        headersStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+        headersStyle.setBorderRight(HSSFCellStyle.BORDER_THIN);
+        headersStyle.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        headersStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+        // 创建[列首]字体
+        HSSFFont headersFont = workbook.createFont();
+        // 设置[列首]字体
+        headersFont.setColor(HSSFColor.VIOLET.index);
+        headersFont.setFontHeightInPoints((short) 12);
+        headersFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        // 把[列首字体]应用到[列首样式]
+        headersStyle.setFont(headersFont);
+
+        // 创建[表中数据]样式
+        HSSFCellStyle dataSetStyle = workbook.createCellStyle();
+        // 设置[表中数据]样式
+//        dataSetStyle.setFillForegroundColor(HSSFColor.YELLOW.index);// 表格内容背景色
+        dataSetStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+        dataSetStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+        dataSetStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+        dataSetStyle.setBorderRight(HSSFCellStyle.BORDER_THIN);
+        dataSetStyle.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        dataSetStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);// 对齐
+        dataSetStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+        dataSetStyle.setWrapText(true);// 自动换行
+        // 创建[表中数据]字体
+        HSSFFont dataSetFont = workbook.createFont();
+        // 设置[表中数据]字体
+        dataSetFont.setBoldweight(HSSFFont.BOLDWEIGHT_NORMAL);
+        // dataSetFont.setColor(HSSFColor.BLUE.index);//表格字体颜色
+        // 把[表中数据字体]应用到[表中数据样式]
+        dataSetStyle.setFont(dataSetFont);
+
+        for (int index = 0; index <= 1="" sheetno;="" index++)="" {="" workbook.setsheetname(index,="" sheetname="" +="" index);="" 设置工作表的名称.="" 写入各个字段的名称="" for="" (int="" i="0;" <="" fieldname.length;="" i++)="" cell="row.createCell(i);" 创建第一行各个字段名称的单元格="" cell.setcelltype(hssfcell.cell_type_string);="" 设置单元格内容为字符串型="" cell.setencoding(hssfcell.encoding_utf_16);="" 为了能在单元格中输入中文,设置字符集为utf_16="" cell.setcellvalue(fieldname[i]);="" 给单元格内容赋值="" cell.setcellstyle(headersstyle);="" }="" int="" startno="index" *="" sheetsize;="" endno="Math.min(startNo" sheetsize,="" list.size());="" 写入各条记录,每条记录对应excel表中的一行="" endno;="" row="sheet.createRow(i" -="" startno);="" hashmap="" map="(HashMap)" list.get(i);="" j="0;" columnit.length;="" j++)="" cell.setcellstyle(datasetstyle);="" object="" value="map.get(columnIt[j]);" if="" (value="" !="null)" cell.setcellvalue(map.get(columnit[j]).tostring());="" else="" cell.setcellvalue("");="" try="" output.flush();="" workbook.write(output);="" output.close();="" return="" true;="" catch="" (ioexception="" e)="" e.printstacktrace();="" system.out.println("output="" is="" closed="" ");="" false;="" pre="">
+
+<p>main方法调用：</p>
+<pre>
+public class ExportTest {
+    public static void main(String[] args) {
+        // 初始化数据
+        List<map> list = new ArrayList<map>();
+        for (int i = 0; i < 10; i++) {
+            Map map = new HashMap();
+            map.put("id", i);
+            map.put("name", "姓名" + i);
+            map.put("age", i);
+            list.add(map);
+        }
+
+        String[] alias = { "编号", "姓名", "年龄" };// excel的列头
+        String[] names = { "id", "name", "age" };// 数据List中的Map的key值.
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream("d:\\success2.xls");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        ExportExcelUtil.exportExcel(list, alias, names, "学生信息表", 60000, out);
+        System.out.println("----执行完毕----------");
+    }
+
+}
+
+</map></map></pre></=></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">工具类</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/10/工具类/poi导出Excel/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/04/06/elasticsearch/elasticsearch-java应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">elasticsearch-java简单应用实例</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -210,9 +417,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
