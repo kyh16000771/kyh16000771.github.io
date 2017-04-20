@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/02/24/java/java foreach遍历的前提条件/index.html">
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="目的： 加深foreach遍历的影响">
-<meta property="og:updated_time" content="2017-04-20T06:30:14.834Z">
+<meta property="og:updated_time" content="2017-04-20T06:34:14.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java foreach遍历的前提条件">
 <meta name="twitter:description" content="目的： 加深foreach遍历的影响">
@@ -153,8 +153,16 @@
       
         <p>目的： 加深foreach遍历的影响<br><a id="more"></a><br>证明：foreach遍历的前提条件是：list !=null ,而不是：list !=null &amp;&amp; list.size() &gt;0</p>
 <p>说明： jdk -version : 1.7</p>
-<p>Java代码</p>
-<p><pre><br>    public static void main(String[] args) {<br>            List<string> list = null;<br>        //    List<string> list = new ArrayList<string>();<br>            for(String temp : list){<br>                System.out.println(temp);<br>            }<br>            System.out.println(“over”);<br>    }<br></string></string></string></pre><br>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
+<p>Java代码:</p>
+<pre><code>public static void main(String[] args) {
+        List&lt;String&gt; list = null;
+    //    List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+        for(String temp : list){
+            System.out.println(temp);
+        }
+        System.out.println(&quot;over&quot;);
+}
+</code></pre><p>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
 <p>　　   当list =new ArrayList<string> 时，未报任何异常</string></p>
 <p>总结：list.size() &gt; 0不是foreach的必要前提条件，而list != null才是foreach的前提条件</p>
 
