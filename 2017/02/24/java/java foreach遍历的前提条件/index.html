@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/02/24/java/java foreach遍历的前提条件/index.html">
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="目的： 加深foreach遍历的影响">
-<meta property="og:updated_time" content="2017-03-29T11:07:17.575Z">
+<meta property="og:updated_time" content="2017-04-20T06:30:14.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java foreach遍历的前提条件">
 <meta name="twitter:description" content="目的： 加深foreach遍历的影响">
@@ -154,7 +154,7 @@
         <p>目的： 加深foreach遍历的影响<br><a id="more"></a><br>证明：foreach遍历的前提条件是：list !=null ,而不是：list !=null &amp;&amp; list.size() &gt;0</p>
 <p>说明： jdk -version : 1.7</p>
 <p>Java代码</p>
-<p><pre><br>public static void main(String[] args) {<br>        List<string> list = null;<br>    //    List<string> list = new ArrayList<string>();<br>        for(String temp : list){<br>            System.out.println(temp);<br>        }<br>        System.out.println(“over”);<br>}<br></string></string></string></pre><br>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
+<p><pre><br>    public static void main(String[] args) {<br>            List<string> list = null;<br>        //    List<string> list = new ArrayList<string>();<br>            for(String temp : list){<br>                System.out.println(temp);<br>            }<br>            System.out.println(“over”);<br>    }<br></string></string></string></pre><br>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
 <p>　　   当list =new ArrayList<string> 时，未报任何异常</string></p>
 <p>总结：list.size() &gt; 0不是foreach的必要前提条件，而list != null才是foreach的前提条件</p>
 
@@ -266,18 +266,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/24/java/Java中List 去掉重复的值，并保持原先List顺序/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/24/elasticsearch/Windows下安装ELK/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java中List 去掉重复的值，并保持原先List顺序
+          Windows下安装ELK
         
       </div>
     </a>
   
   
-    <a href="/2017/02/24/工具类/红包算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java 红包算法</div>
+    <a href="/2017/02/24/java/Java中List 去掉重复的值，并保持原先List顺序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java中List 去掉重复的值，并保持原先List顺序</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -389,19 +389,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -409,7 +401,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具类</a>
+                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
             
             <div class="clearfix"></div>
