@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/02/24/java/java foreach遍历的前提条件/index.html">
 <meta property="og:site_name" content="nieht">
 <meta property="og:description" content="目的： 加深foreach遍历的影响">
-<meta property="og:updated_time" content="2017-04-20T06:34:14.338Z">
+<meta property="og:updated_time" content="2017-04-20T06:36:38.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java foreach遍历的前提条件">
 <meta name="twitter:description" content="目的： 加深foreach遍历的影响">
@@ -154,14 +154,14 @@
         <p>目的： 加深foreach遍历的影响<br><a id="more"></a><br>证明：foreach遍历的前提条件是：list !=null ,而不是：list !=null &amp;&amp; list.size() &gt;0</p>
 <p>说明： jdk -version : 1.7</p>
 <p>Java代码:</p>
-<pre><code>public static void main(String[] args) {
+<pre><code>public static void main(String[] args) {    
         List&lt;String&gt; list = null;
     //    List&lt;String&gt; list = new ArrayList&lt;String&gt;();
         for(String temp : list){
             System.out.println(temp);
         }
         System.out.println(&quot;over&quot;);
-}
+} 
 </code></pre><p>现象：当list为null时，走到foreach语句时，会报空指针异常</p>
 <p>　　   当list =new ArrayList<string> 时，未报任何异常</string></p>
 <p>总结：list.size() &gt; 0不是foreach的必要前提条件，而list != null才是foreach的前提条件</p>
@@ -274,18 +274,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/24/elasticsearch/Windows下安装ELK/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/24/Tomcat/Tomcat配置去掉项目名称，直接通过域名访问/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Windows下安装ELK
+          Tomcat配置去掉项目名称，直接通过域名访问
         
       </div>
     </a>
   
   
-    <a href="/2017/02/24/java/Java中List 去掉重复的值，并保持原先List顺序/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java中List 去掉重复的值，并保持原先List顺序</div>
+    <a href="/2017/02/24/框架/mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mybatis中#跟$的区别</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -385,11 +385,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -397,7 +397,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具类</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -405,11 +409,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">springjdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -417,7 +425,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具类</a>
               </li>
             
             <div class="clearfix"></div>
